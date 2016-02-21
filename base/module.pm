@@ -17,8 +17,9 @@ sub add_commands  {
                 my $fromnick = (split /!/, $from)[0];
                 my (undef, $username, $password) = split m{/}, "$::password/";
                 ::bot_log "AUTH from $fromnick\n";
-                ::say('nickserv@services.globalgamers.net', "auth $username $password");
+                ::say('nickserv', "auth $username $password");
                 $::cur_connection->mode($::nick, '+'.'x', $::nick);
+		$::cur_connection->mode($::nick, '+'.'B', $::nick);
                 return 1;
         }, 500, "Causes the bot to auth with nickserv if it has not done so.";
 	::add_command_any "quit", sub {
@@ -64,13 +65,13 @@ sub add_commands  {
 		my $owner = quotemeta $::owner;
 		my $nick = quotemeta $::nick;
 		
-		if ($target =~ /self/i || $target =~ /bot/i || $target =~ /$owner/i || $target =~ /$nick/i || $target =~ /owner/i || $target =~ /Xyl/i || $target =~ /Uprising/i)
+		if ($target =~ /self/i || $target =~ /bot/i || $target =~ /$owner/i || $target =~ /$nick/i || $target =~ /owner/i || $target =~ /Xyl/i || $target =~ /bluesoul/i)
 		{
 			$target = $from;
 			$target =~ s/!.*$//;
 		}
 		
-		::action("puts on some spike-toed boots and proceeds to vigorously kick $target in the nuts over and over and over and over and over and over and over...");
+		::action("punches $from in the face for promoting violence.");
 		return 1;
 	}, "gumby <person>: Causes the bot to attack someone with extreme hostility.";
 	::add_command_any "loadmodule", sub {

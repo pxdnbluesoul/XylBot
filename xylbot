@@ -55,13 +55,13 @@ sub bot_log {
 if (!defined $loaded || !$loaded)
 {
 	$pid_file= "xylbot";
-	$server = "irc.globalgamers.net";
-	$channel = "#xylbot";
-	$nick = "DazBot";
-	$owner = "Daz";
-	$password = "";
-	$port = 6668;
-	$linedelay = 1;
+	$server = "irc.synirc.net";
+	$channel = "#scpmafia";
+	$nick = "O5_Command";
+	$owner = "bluesoul";
+	$password = "botpass";
+	$port = 6664;
+	$linedelay = 0.1;
 
 	for my $arg (@ARGV)
 	{
@@ -103,8 +103,8 @@ sub create_connection {
 		Port => $port,
 		Password => $password,
 		Pacing => $linedelay,
-		Username => 'dazbot',
-		Ircname => 'dazbot');
+		Username => 'mafiabot',
+		Ircname => 'mafiabot');
 	add_commands();
 	add_handlers();
 	return $connection;

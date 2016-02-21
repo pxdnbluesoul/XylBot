@@ -1840,7 +1840,7 @@ sub brag {
 		$braginterval = 120;
 	}
 
-	if (++$brag_count < 1) {
+	if (++$brag_count < 2) {
 		schedule(\$bragtimer, $braginterval * 60, \&brag);
 	}
 }
