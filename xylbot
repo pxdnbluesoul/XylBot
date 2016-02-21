@@ -57,7 +57,7 @@ if (!defined $loaded || !$loaded)
 	$pid_file= "xylbot";
 	$server = "irc.synirc.net";
 	$channel = "#scpmafia";
-	$nick = "O5_Command";
+	$nick = "O5_Beta";
 	$owner = "bluesoul";
 	$password = "botpass";
 	$port = 6664;
