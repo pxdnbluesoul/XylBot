@@ -54,7 +54,7 @@ sub bot_log {
 
 if (!defined $loaded || !$loaded)
 {
-	eval read_file('CONFIG') # 
+	eval read_file('CONFIG'); # 
 
 	for my $arg (@ARGV)
 	{
