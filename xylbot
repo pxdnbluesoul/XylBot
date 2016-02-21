@@ -6,6 +6,7 @@ no warnings 'redefine';
 use strict;
 
 use Net::IRC;
+use File::Slurp;
 
 # Configuration
 
@@ -16,7 +17,7 @@ our (%module_status, %module_loaded, @module_files);
 our (%commands, %commands_public, %commands_private, %command_help);
 our (%handlers);
 
-our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file);
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
 
 our ($cur_channel, $cur_connection, $cur_fromnick, $cur_forum);
 
