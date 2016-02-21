@@ -54,14 +54,7 @@ sub bot_log {
 
 if (!defined $loaded || !$loaded)
 {
-	$pid_file= "xylbot";
-	$server = "irc.synirc.net";
-	$channel = "#scpmafia";
-	$nick = "O5_Beta";
-	$owner = "bluesoul";
-	$password = "botpass";
-	$port = 6664;
-	$linedelay = 0.1;
+	eval read_file('CONFIG') # 
 
 	for my $arg (@ARGV)
 	{
@@ -103,8 +96,8 @@ sub create_connection {
 		Port => $port,
 		Password => $password,
 		Pacing => $linedelay,
-		Username => 'mafiabot',
-		Ircname => 'mafiabot');
+		Username => $username,
+		Ircname => $ircname);
 	add_commands();
 	add_handlers();
 	return $connection;
