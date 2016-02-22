@@ -689,9 +689,6 @@ sub mafia_command {
 	if ($subcommand eq 'auth')
 	{
 	my $self = shift;
-
-	$self->privmsg('bluesoul', "Authenticating with NickServ");
-	$self->privmsg('bluesoul', "identify botpass");
 	}
 	elsif ($subcommand eq 'go' && $phase eq 'signup' && $to eq $mafiachannel && $forum eq 'public')
 	{
