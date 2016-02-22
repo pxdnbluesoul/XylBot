@@ -6,5 +6,5 @@
 	$password = "botpass";
 	$port = 6664;
 	$linedelay = 0.1;
-	$username = mafiabot";
-	$ircname = 'mafiabot';
+	$username = "mafiabot";
+	$ircname = "mafiabot";
