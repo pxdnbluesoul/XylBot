@@ -65,13 +65,10 @@ sub add_commands  {
 		my $owner = quotemeta $::owner;
 		my $nick = quotemeta $::nick;
 		
-		if ($target =~ /self/i || $target =~ /bot/i || $target =~ /$owner/i || $target =~ /$nick/i || $target =~ /owner/i || $target =~ /Xyl/i || $target =~ /bluesoul/i)
-		{
-			$target = $from;
-			$target =~ s/!.*$//;
-		}
-		my $fromnick = (split /!/, $from)[0];
-		::action("punches $fromnick in the face for promoting violence.");
+		$target = $from;
+		$target =~ s/!.*$//;
+		
+		::action("punches $target in the face for promoting violence.");
 		return 1;
 	}, "gumby <person>: Causes the bot to attack someone with extreme hostility.";
 	::add_command_any "loadmodule", sub {
