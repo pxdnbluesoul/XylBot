@@ -19,7 +19,7 @@ our (%handlers);
 
 our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
 
-our ($messagemode, $resolvemode, $mafia_cmd) # Not actually used here but present in config.ini
+our ($messagemode, $resolvemode, $mafia_cmd); # Not actually used here but present in config.ini
 
 our ($cur_channel, $cur_connection, $cur_fromnick, $cur_forum);
 
