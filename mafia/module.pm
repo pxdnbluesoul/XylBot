@@ -35,7 +35,7 @@ our $resolvemode;
 our $messagemode;
 our $mafia_cmd;
 
-eval file_read("../config.ini")
+eval read_file("config.ini");
 
 our $cur_setup;
 our $nonrandom_assignment;
