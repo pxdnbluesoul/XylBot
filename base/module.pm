@@ -4,6 +4,12 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
+use File::Slurp;
+
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname); #lots of crap for the password var. Oh well.
+
+our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
+
 sub add_commands  {
 	::add_command_any "time", sub {
 		my ($self, $command, $forum, $from, $to, $args) = @_;
@@ -13,6 +19,7 @@ sub add_commands  {
 		return 1;
 	}, "Returns the current time on the bot's clock.";
 	::add_command_any "auth", sub {
+				eval read_file('config.ini');
                 my ($self, $command, $forum, $from, $to, $args) = @_;
                 my $fromnick = (split /!/, $from)[0];
                 my (undef, $username, $password) = split m{/}, "$::password/";
