@@ -2743,7 +2743,7 @@ ACTIONS
 Games in mafia inolves two phases: day and night. During the night, actions are used. During the day, players vote to lynch (kill) a player. The aim as 'mafia' is to survive until there are the same number of townies left as there are members of the mafia (commonly called 'scum'). As the town, the aim is to eliminate all the members of the mafia. As 'sk', the aim is to be last person alive.
  The town is an uninformed majority and do not know the alignments of each other, while the mafia knows who is a member of the mafia. During the day, the town will attempt to identify who the scum is, while the mafia will try to mislead members of the town into lynching each other.
 It is critical that players do NOT copypaste any botmessages relating to their claim, and town players should aim not to lie here. As scum, it is advisable not to claim your real role. This can be achieved by using a 'fakeclaim'. Common fakeclaims include townie and doctor and serve the purpose of making the player look like town - and thus are more likely to win.
-Certain roles have minimum player limits (doctor can only appear with 4 or more players), so be careful not to claim a role that cannot occur. To find a role that you can fakeclaim, try "/msg $::nick !o5 testsetup [setup] [players]'.
+Certain roles have minimum player limits (doctor can only appear with 4 or more players), so be careful not to claim a role that cannot occur. To find a role that you can fakeclaim, try "/msg $::nick $mafia_cmd testsetup [setup] [players]'.
 GAMEPLAY
 	::add_help "rules", <<RULES;
 Failing to follow these rules may result in being removed from games and/or banned.
