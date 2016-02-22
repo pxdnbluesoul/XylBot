@@ -6758,7 +6758,7 @@ our %role_config = (
 			maxvote => '3',
 			evolveto => "theme_timespiral_morph",
 		},
-		theme => timespiral,
+		theme => "timespiral",
 	},
 	theme_timespiral_havenwoodwurm => {
 		name => "Havenwood Wurm",
@@ -10588,6 +10588,8 @@ status => {
 our (%setuprole_cache, %evolution_cache, %canonicalize_cache);
 %setuprole_cache = %evolution_cache = %canonicalize_cache = ();
 
+=comment lets remove this stuff for now
+
 sub add_gunfight_role {
 	my ($level, $gun, $misc) = @_;
 
@@ -10887,6 +10889,8 @@ foreach my $hp (qw(100 120 150 200))
 		add_gunfight_role_fake($hp, $miscitem);
 	}
 }
+
+=cut
 
 read_adaptive_powers();
 

@@ -33,6 +33,10 @@ our @test_scheduled_events;
 
 our ($end_signups_time);
 
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
+
+our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
+
 sub add_moderator {
 	my ($fromnick, $frommask) = @_;
 	
@@ -689,9 +693,6 @@ sub mafia_command {
 	if ($subcommand eq 'auth')
 	{
 	my $self = shift;
-
-	$self->privmsg('bluesoul', "Authenticating with NickServ");
-	$self->privmsg('nickserv', "identify botpass");
 	}
 	elsif ($subcommand eq 'go' && $phase eq 'signup' && $to eq $mafiachannel && $forum eq 'public')
 	{
@@ -2084,7 +2085,7 @@ sub help {
 
 	return 0 if $args;
 	
-	notice($player, "Welcome to #scpmafia @ irc.synirc.net. For help on playing the game, type \"/msg $::nick help basics\" and \"/msg $::nick help gameplay\".");
+	notice($player, "Welcome to $channel @ $server. For help on playing the game, type \"/msg $::nick help basics\" and \"/msg $::nick help gameplay\".");
 	notice($player, "To see the rules, type \"/msg $::nick help rules\". All of the previous must be done before playing.");
 	notice($player, "Give mafia commands to the bot by typing \"!$mafia_cmd [command]\" in the channel or \"/msg $::nick $mafia_cmd [command]\".");
 	notice($player, "For help on specific commands, roles, actions, or setups, try \"!$mafia_cmd help [topic]\".");
@@ -2742,7 +2743,7 @@ ACTIONS
 Games in mafia inolves two phases: day and night. During the night, actions are used. During the day, players vote to lynch (kill) a player. The aim as 'mafia' is to survive until there are the same number of townies left as there are members of the mafia (commonly called 'scum'). As the town, the aim is to eliminate all the members of the mafia. As 'sk', the aim is to be last person alive.
  The town is an uninformed majority and do not know the alignments of each other, while the mafia knows who is a member of the mafia. During the day, the town will attempt to identify who the scum is, while the mafia will try to mislead members of the town into lynching each other.
 It is critical that players do NOT copypaste any botmessages relating to their claim, and town players should aim not to lie here. As scum, it is advisable not to claim your real role. This can be achieved by using a 'fakeclaim'. Common fakeclaims include townie and doctor and serve the purpose of making the player look like town - and thus are more likely to win.
-Certain roles have minimum player limits (doctor can only appear with 4 or more players), so be careful not to claim a role that cannot occur. To find a role that you can fakeclaim, try "/msg $::nick !o5 testsetup [setup] [players]'.
+Certain roles have minimum player limits (doctor can only appear with 4 or more players), so be careful not to claim a role that cannot occur. To find a role that you can fakeclaim, try "/msg $::nick !$mafia_cmd testsetup [setup] [players]'.
 GAMEPLAY
 	::add_help "rules", <<RULES;
 Failing to follow these rules may result in being removed from games and/or banned.
@@ -2754,7 +2755,7 @@ If you have any questions, concerns or suggestions, PM an Operator (@).
 3. You may not impersonate a user unless you are replacing them into the current game.
 4. You must attempt to fulfill your win condition in all games. You may not intentionally delay a certain win. 
 5. You may not bring outside information or vendettas into the current game.
-6. Do not join games you cannot complete. If you need to leave, say so and '/nick YourNewNidck' before you go.
+6. Do not join games you cannot complete. If you need to leave, say so and '/nick YourNewNick' before you go.
 7. Abuse of bot and server mechanics is against the spirit of the game and as such should not be used. Users should also seek not to use non-standard characters during a game.
 8. Do not spam the channel or use excessive caps. Multiple bot commands should be done in PM. 
 9. Discrimination (including but not limited to race, sexuality, gender, religion) and excessive abuse is forbidden.  

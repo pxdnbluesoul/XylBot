@@ -4,6 +4,12 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
+use File::Slurp;
+
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname); #lots of crap for the password var. Oh well.
+
+our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
+
 sub add_commands  {
 	::add_command_any "time", sub {
 		my ($self, $command, $forum, $from, $to, $args) = @_;
@@ -13,11 +19,11 @@ sub add_commands  {
 		return 1;
 	}, "Returns the current time on the bot's clock.";
 	::add_command_any "auth", sub {
+				eval read_file('config.ini');
                 my ($self, $command, $forum, $from, $to, $args) = @_;
                 my $fromnick = (split /!/, $from)[0];
-                my (undef, $username, $password) = split m{/}, "$::password/";
                 ::bot_log "AUTH from $fromnick\n";
-                ::say('nickserv', "auth $username $password");
+                ::say('nickserv', "auth $nick $password");
                 $::cur_connection->mode($::nick, '+'.'x', $::nick);
 		$::cur_connection->mode($::nick, '+'.'B', $::nick);
                 return 1;
@@ -65,13 +71,10 @@ sub add_commands  {
 		my $owner = quotemeta $::owner;
 		my $nick = quotemeta $::nick;
 		
-		if ($target =~ /self/i || $target =~ /bot/i || $target =~ /$owner/i || $target =~ /$nick/i || $target =~ /owner/i || $target =~ /Xyl/i || $target =~ /bluesoul/i)
-		{
-			$target = $from;
-			$target =~ s/!.*$//;
-		}
+		$target = $from;
+		$target =~ s/!.*$//;
 		
-		::action("punches $from in the face for promoting violence.");
+		::action("punches $target in the face for promoting violence.");
 		return 1;
 	}, "gumby <person>: Causes the bot to attack someone with extreme hostility.";
 	::add_command_any "loadmodule", sub {

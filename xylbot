@@ -6,6 +6,7 @@ no warnings 'redefine';
 use strict;
 
 use Net::IRC;
+use File::Slurp;
 
 # Configuration
 
@@ -16,7 +17,9 @@ our (%module_status, %module_loaded, @module_files);
 our (%commands, %commands_public, %commands_private, %command_help);
 our (%handlers);
 
-our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file);
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
+
+our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
 
 our ($cur_channel, $cur_connection, $cur_fromnick, $cur_forum);
 
@@ -54,14 +57,8 @@ sub bot_log {
 
 if (!defined $loaded || !$loaded)
 {
-	$pid_file= "xylbot";
-	$server = "irc.synirc.net";
-	$channel = "#scpmafia";
-	$nick = "O5_Command";
-	$owner = "bluesoul";
-	$password = "botpass";
-	$port = 6664;
-	$linedelay = 0.1;
+	# The fillable stuff has all been moved to config.ini.
+	eval read_file('config.ini');
 
 	for my $arg (@ARGV)
 	{
@@ -83,7 +80,7 @@ else
 
 # Save PID
 if ($pid_file) {
-	open FILE, ">", "pid.$pid_file";
+	open FILE, ">", "pid.$pid_file" or die "Cannot open file for writing (Are you running as admin/sudo?): $!\n";
 	print FILE $$;
 	close FILE;
 }
@@ -103,8 +100,8 @@ sub create_connection {
 		Port => $port,
 		Password => $password,
 		Pacing => $linedelay,
-		Username => 'mafiabot',
-		Ircname => 'mafiabot');
+		Username => $username,
+		Ircname => $ircname);
 	add_commands();
 	add_handlers();
 	return $connection;
@@ -542,7 +539,7 @@ sub load_modules {
 sub read_users {
 	@users = ();
 	
-	open CONFIG, "<", "users";
+	open CONFIG, "<", "admins.ini";
 	while (my $line = <CONFIG>)
 	{
 		next if $line =~ /^\s*#/;
