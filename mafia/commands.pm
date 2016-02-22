@@ -2754,7 +2754,7 @@ If you have any questions, concerns or suggestions, PM an Operator (@).
 3. You may not impersonate a user unless you are replacing them into the current game.
 4. You must attempt to fulfill your win condition in all games. You may not intentionally delay a certain win. 
 5. You may not bring outside information or vendettas into the current game.
-6. Do not join games you cannot complete. If you need to leave, say so and '/nick YourNewNidck' before you go.
+6. Do not join games you cannot complete. If you need to leave, say so and '/nick YourNewNick' before you go.
 7. Abuse of bot and server mechanics is against the spirit of the game and as such should not be used. Users should also seek not to use non-standard characters during a game.
 8. Do not spam the channel or use excessive caps. Multiple bot commands should be done in PM. 
 9. Discrimination (including but not limited to race, sexuality, gender, religion) and excessive abuse is forbidden.  
