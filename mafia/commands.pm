@@ -33,6 +33,10 @@ our @test_scheduled_events;
 
 our ($end_signups_time);
 
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
+
+our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
+
 sub add_moderator {
 	my ($fromnick, $frommask) = @_;
 	
@@ -2081,7 +2085,7 @@ sub help {
 
 	return 0 if $args;
 	
-	notice($player, "Welcome to #scpmafia @ irc.synirc.net. For help on playing the game, type \"/msg $::nick help basics\" and \"/msg $::nick help gameplay\".");
+	notice($player, "Welcome to $channel @ $server. For help on playing the game, type \"/msg $::nick help basics\" and \"/msg $::nick help gameplay\".");
 	notice($player, "To see the rules, type \"/msg $::nick help rules\". All of the previous must be done before playing.");
 	notice($player, "Give mafia commands to the bot by typing \"!$mafia_cmd [command]\" in the channel or \"/msg $::nick $mafia_cmd [command]\".");
 	notice($player, "For help on specific commands, roles, actions, or setups, try \"!$mafia_cmd help [topic]\".");
