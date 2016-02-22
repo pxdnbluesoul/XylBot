@@ -55,8 +55,8 @@ sub bot_log {
 
 if (!defined $loaded || !$loaded)
 {
-	# The fillable stuff has all been moved to CONFIG.
-	eval read_file('CONFIG');
+	# The fillable stuff has all been moved to config.ini.
+	eval read_file('config.ini');
 
 	for my $arg (@ARGV)
 	{

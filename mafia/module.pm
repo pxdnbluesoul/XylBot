@@ -9,6 +9,7 @@ use Carp qw(cluck);
 use String::Similarity;
 use IO::Handle;
 use Fcntl ':flock';
+use File::Slurp;
 
 sub next_phase;
 
@@ -31,11 +32,10 @@ our (@items_on_ground);
 our ($gameid, $gamelogfile);
 
 our $resolvemode;
-$resolvemode = 'paradox' unless defined($resolvemode);
 our $messagemode;
-$messagemode = 'color' unless defined($messagemode);
 our $mafia_cmd;
-$mafia_cmd = 'o5' unless defined($mafia_cmd);
+
+eval file_read("../config.ini")
 
 our $cur_setup;
 our $nonrandom_assignment;
