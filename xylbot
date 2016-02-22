@@ -78,7 +78,7 @@ else
 
 # Save PID
 if ($pid_file) {
-	open FILE, ">", "pid.$pid_file" or die "Cannot open file for writing: $!\n";
+	open FILE, ">", "pid.$pid_file" or die "Cannot open file for writing (Are you running as admin/sudo?): $!\n";
 	print FILE $$;
 	close FILE;
 }
