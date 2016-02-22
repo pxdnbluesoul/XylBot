@@ -55,7 +55,8 @@ sub bot_log {
 
 if (!defined $loaded || !$loaded)
 {
-	eval read_file('CONFIG'); # 
+	# The fillable stuff has all been moved to CONFIG.
+	eval read_file('CONFIG');
 
 	for my $arg (@ARGV)
 	{
@@ -77,7 +78,7 @@ else
 
 # Save PID
 if ($pid_file) {
-	open FILE, ">", "pid.$pid_file";
+	open FILE, ">", "pid.$pid_file" or die "Cannot open file for writing: $!\n";
 	print FILE $$;
 	close FILE;
 }

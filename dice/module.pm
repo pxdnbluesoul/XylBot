@@ -455,7 +455,7 @@ sub load_aliases {
 	my $line;
 
 	for my $file ("dice/aliases", "dice/globalaliases") {
-		open ALIASES, "<", $file;
+		open ALIASES, "<", $file or die "Cannot open dice file for writing: $!\n";;
 	
 		while ($line = <ALIASES>)
 		{
