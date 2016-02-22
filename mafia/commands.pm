@@ -33,9 +33,8 @@ our @test_scheduled_events;
 
 our ($end_signups_time);
 
-our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname, $brag_limit); # imports for help docs.
 
-our ($messagemode, $resolvemode, $mafia_cmd, $brag_limit); # Not actually used here but present in config.ini
 
 sub add_moderator {
 	my ($fromnick, $frommask) = @_;
