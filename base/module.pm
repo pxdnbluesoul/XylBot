@@ -70,7 +70,7 @@ sub add_commands  {
 			$target = $from;
 			$target =~ s/!.*$//;
 		}
-		
+		my $fromnick = (split /!/, $from)[0];
 		::action("punches $fromnick in the face for promoting violence.");
 		return 1;
 	}, "gumby <person>: Causes the bot to attack someone with extreme hostility.";
