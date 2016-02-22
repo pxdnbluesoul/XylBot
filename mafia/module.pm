@@ -16,6 +16,8 @@ sub next_phase;
 # Not actually used here but present in config.ini.
 our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
 
+our $brag_limit; # Check config.ini.
+
 our $game_active;
 our %config;
 
@@ -1843,7 +1845,7 @@ sub brag {
 		$braginterval = 120;
 	}
 
-	if (++$brag_count < 1) {
+	if (++$brag_count < $brag_limit) {
 		schedule(\$bragtimer, $braginterval * 60, \&brag);
 	}
 }
