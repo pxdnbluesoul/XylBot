@@ -71,7 +71,7 @@ sub add_commands  {
 			$target =~ s/!.*$//;
 		}
 		
-		::action("punches $from in the face for promoting violence.");
+		::action("punches $fromnick in the face for promoting violence.");
 		return 1;
 	}, "gumby <person>: Causes the bot to attack someone with extreme hostility.";
 	::add_command_any "loadmodule", sub {
