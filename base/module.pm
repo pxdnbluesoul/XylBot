@@ -22,9 +22,8 @@ sub add_commands  {
 				eval read_file('config.ini');
                 my ($self, $command, $forum, $from, $to, $args) = @_;
                 my $fromnick = (split /!/, $from)[0];
-                my (undef, $username, $password) = split m{/}, "$::password/";
                 ::bot_log "AUTH from $fromnick\n";
-                ::say('nickserv', "auth $username $password");
+                ::say('nickserv', "auth $nick $password");
                 $::cur_connection->mode($::nick, '+'.'x', $::nick);
 		$::cur_connection->mode($::nick, '+'.'B', $::nick);
                 return 1;
