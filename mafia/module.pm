@@ -13,6 +13,9 @@ use File::Slurp;
 
 sub next_phase;
 
+# Not actually used here but present in config.ini.
+our ($server, $channel, $nick, $owner, $port, $password, $linedelay, $require_name, $logtofile, $pid_file, $username, $ircname);
+
 our $game_active;
 our %config;
 

@@ -11,7 +11,7 @@ You may also need to:
 
 `sudo cpan install File::Read`
 
-At that point you should edit the CONFIG file and edit the details for your installation.
+At that point you should edit the config.ini file and edit the details for your installation, and edit admins.ini following the example entries. 500 is a full admin, 400 is a moderator.
 
 ##Additional Reading
 
