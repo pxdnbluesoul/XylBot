@@ -9,7 +9,7 @@ On CentOS 7, you need a little prep.
 
 You may also need to:
 
-`sudo cpan File::Read`
+`sudo cpan File::Read`  
 `sudo cpan Time::HiRes` on CentOS 6 or if you get an error stating `No method called "time" for  object. at lib/Net/IRC.pm line 195`
 
 You should now edit the config.ini file and edit the details for your installation, and edit admins.ini following the example entries. 500 is a full admin, 400 is a moderator.
